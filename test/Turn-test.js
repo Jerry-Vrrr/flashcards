@@ -25,10 +25,12 @@ describe('Turn', () => {
   })
 
   it('should evaluate a guess', () => {
-    expect(turn.evaluateGuess()).to.equal('2 is correct!')
+    expect(turn.evaluateGuess()).to.equal(true)
+    turn = new Turn('3', card)
+    expect(turn.evaluateGuess()).to.equal(false)
   })
 
   it('should give feedback', () => {
-    expect(turn.evaluateGuess()).to.equal('2 is correct!')
+    expect(turn.evaluateGuess()).to.equal(true)
   })
 })

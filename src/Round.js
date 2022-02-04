@@ -1,40 +1,32 @@
 const Turn = require('../src/Turn');
 
-
 class Round {
   constructor(currentCard, turns) {
     this.currentCard = currentCard
     this.turns = 0
     this.incorrectGuesses = []
   }
+
   takeTurn(guess) {
     this.turns++
     let turn = new Turn(guess, this.currentCard)
     return turn
-
+    if (turn.evaluateGuess() === false) {
+    return  this.incorrectGuesses.push(this.currentCard.id);
+    }
   }
+
   returnCurrentCard() {
     return this.currentCard
   }
+
+  calculatePercentage() {
+    console.log(this.incorrectGuesses.length / this.turns  * 100)
+    console.log(this.turns)
+    console.log(this.incorrectGuesses)
+    return this.incorrectGuesses.length / this.turns  * 100
+  }
+
 }
 
 module.exports = Round;
-
-
-/*Notes/questions
-
-Need to add the deck next
-
-feedback given in turn and round?
-
-Accessing between files. rules and such..
-
-Command line interface is... console logs?
-
-What are the important lessons here?
-
-Not doing this right and I think I'm ok with that?..
-
-
-
-*/

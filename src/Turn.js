@@ -1,3 +1,4 @@
+const Round = require('../src/Round');
 class Turn {
   constructor(guess, card) {
     this.guess = guess
@@ -6,17 +7,17 @@ class Turn {
   returnGuess() {
     return this.guess
     }
-    returnCard() {
-      return this.card
+  returnCard() {
+    return this.card
+  }
+  evaluateGuess() {
+    if (this.guess !== this.card.correctAnswer) {
+      return false
     }
-    evaluateGuess() {
-      console.log()
-      if (this.guess == this.card.correctAnswer) {
-        return `${this.guess} is correct!`
-      } else {
-        return `${this.guess} is incorrect!`
-      }
+    if (this.guess == this.card.correctAnswer) {
+      return true
     }
+  }
 }
 
 module.exports = Turn;
